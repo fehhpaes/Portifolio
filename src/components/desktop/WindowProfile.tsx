@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Monitor, MapPin, Globe, GraduationCap, X, Minus, Square } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { Monitor, MapPin, Globe, GraduationCap } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export const WindowProfile: React.FC = () => {
+  const { personal, bio, contact } = profileData;
+
   return (
     <section id="perfil" className="my-6">
       {/* Win95 Window Container */}
@@ -14,7 +16,7 @@ export const WindowProfile: React.FC = () => {
         <div className="bg-[#000080] text-white px-2 py-1 flex items-center justify-between font-sans text-xs font-bold select-none">
           <div className="flex items-center gap-1.5">
             <Monitor className="w-3.5 h-3.5 text-white" />
-            <span>Propriedades do Sistema: Felipe Paes da Silva</span>
+            <span>Propriedades do Sistema: {personal.name}</span>
           </div>
           {/* Window Buttons */}
           <div className="flex items-center gap-1">
@@ -57,10 +59,17 @@ export const WindowProfile: React.FC = () => {
 
             {/* Right System Info Specs */}
             <div className="md:col-span-9 space-y-2">
-              <div>
-                <span className="font-bold text-sm block">Sistema:</span>
-                <p className="text-slate-800 text-xs">Felipe Paes da Silva • Desenvolvedor Multiplataforma</p>
-                <p className="text-slate-600 text-[11px]">JavaScript, TypeScript, Next.js, Node.js & React Native</p>
+              <div className="flex flex-col md:flex-row items-center md:items-start">
+                <img
+                  src="/profile.jpeg"
+                  alt="Felipe Paes da Silva"
+                  className="w-24 h-24 object-cover border-2 border-t-gray-800 border-l-gray-800 border-b-white border-r-white mr-4 mb-4 shrink-0"
+                />
+                <div className="text-center md:text-left">
+                  <span className="font-bold text-sm block">Sistema:</span>
+                  <p className="text-slate-800 text-xs">{personal.name} • {personal.shortRole}</p>
+                  <p className="text-slate-600 text-[11px]">JavaScript, TypeScript, Next.js, Node.js & React Native</p>
+                </div>
               </div>
 
               <div className="border-t border-slate-400 pt-2 grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -68,21 +77,21 @@ export const WindowProfile: React.FC = () => {
                   <span className="font-bold text-slate-900 block flex items-center gap-1">
                     <MapPin className="w-3 h-3 text-red-700" /> [ BASE ]
                   </span>
-                  <span className="text-slate-800 text-xs font-medium">Sorocaba, SP</span>
+                  <span className="text-slate-800 text-xs font-medium">{personal.location}</span>
                 </div>
 
                 <div className="p-2 bg-white border border-slate-400">
                   <span className="font-bold text-slate-900 block flex items-center gap-1">
                     <Globe className="w-3 h-3 text-blue-700" /> [ IDIOMAS ]
                   </span>
-                  <span className="text-slate-800 text-xs font-medium">Inglês</span>
+                  <span className="text-slate-800 text-xs font-medium">{personal.languages}</span>
                 </div>
 
                 <div className="p-2 bg-white border border-slate-400">
                   <span className="font-bold text-slate-900 block flex items-center gap-1">
                     <GraduationCap className="w-3 h-3 text-amber-700" /> [ FORMAÇÃO ]
                   </span>
-                  <span className="text-slate-800 text-xs font-medium">Uniso, Uninter, Fatec & Etec</span>
+                  <span className="text-slate-800 text-xs font-medium">{personal.education}</span>
                 </div>
               </div>
             </div>
@@ -92,7 +101,7 @@ export const WindowProfile: React.FC = () => {
           {/* Synopsis Paragraph */}
           <div className="p-3 bg-white border border-slate-400 leading-relaxed text-justify text-slate-900">
             <p>
-              Desenvolvedor focado no ecossistema JavaScript e TypeScript. A minha trajetória é um pouco diferente: formei-me em História e Geografia, o que me deu uma base analítica forte para entender os problemas de negócio a fundo. Atualmente, curso Desenvolvimento de Software Multiplataforma na Fatec e atuo na gestão da infraestrutura de TI da Etec Armando Pannunzio.
+              {bio.fullSynopsis}
             </p>
           </div>
 
@@ -105,7 +114,7 @@ export const WindowProfile: React.FC = () => {
               OK (Ver Projetos)
             </a>
             <a
-              href="https://github.com/fehhpaes"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1 bg-[#c0c0c0] border-2 border-t-white border-l-white border-r-black border-b-black text-black hover:bg-[#d0d0d0]"
@@ -113,7 +122,7 @@ export const WindowProfile: React.FC = () => {
               GitHub.exe
             </a>
             <a
-              href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-1 bg-[#c0c0c0] border-2 border-t-white border-l-white border-r-black border-b-black text-black hover:bg-[#d0d0d0]"

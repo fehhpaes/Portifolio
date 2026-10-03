@@ -1,66 +1,10 @@
-'use client';
-
-import React, { useState } from 'react';
-import { Mail, Send, CheckCircle2, AlertCircle, Loader2, HardDrive, MessageSquare } from 'lucide-react';
+import React from 'react';
+import { Mail, HardDrive, MessageSquare, Send, Radio } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+import { profileData } from '@/data/profile';
 
 export const ConsoleContact: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState<string>('');
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Falha ao despachar mensagem. Tente novamente.');
-      }
-
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (err: unknown) {
-      setStatus('error');
-      if (err instanceof Error) {
-        setErrorMessage(err.message);
-      } else {
-        setErrorMessage('Ocorreu um erro inesperado.');
-      }
-    }
-  };
+  const { personal, contact } = profileData;
 
   return (
     <section id="contato" className="py-12 border-b-4 border-slate-700">
@@ -69,7 +13,7 @@ export const ConsoleContact: React.FC = () => {
         {/* Section Header */}
         <div className="mb-6 flex items-center justify-between pb-2 border-b-2 border-blue-400/40 text-yellow-300 font-pixel text-xl drop-shadow-[2px_2px_0px_#000]">
           <span className="flex items-center gap-2">
-            <HardDrive className="w-5 h-5 text-yellow-300" /> MEMORY TRANSMITTER • CORRESPONDENCE
+            <HardDrive className="w-5 h-5 text-yellow-300" /> MEMORY TRANSMITTER • COMMS HUB
           </span>
           <span className="text-cyan-300 text-sm">[ STATUS: ONLINE ]</span>
         </div>
@@ -84,12 +28,12 @@ export const ConsoleContact: React.FC = () => {
                 <span>Canais do Aventureiro</span>
               </h3>
               <p className="text-xs text-slate-200 font-sans leading-relaxed mb-4">
-                Envie uma mensagem direta via LinkedIn ou acompanhe os repositórios técnicos no GitHub.
+                Redes oficiais de comunicação e acompanhamento de código-fonte.
               </p>
 
               <div className="space-y-2.5">
                 <a
-                  href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+                  href={contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-[#091533] border-2 border-t-blue-400 border-l-blue-400 border-r-blue-950 border-b-blue-950 text-white hover:bg-blue-800 transition-none"
@@ -99,12 +43,12 @@ export const ConsoleContact: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-[11px] text-yellow-300 uppercase">[ PERFIL PROFISSIONAL ]</div>
-                    <div className="text-sm font-bold text-white">Felipe Paes da Silva</div>
+                    <div className="text-sm font-bold text-white">{personal.name}</div>
                   </div>
                 </a>
 
                 <a
-                  href="https://github.com/fehhpaes"
+                  href={contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-[#091533] border-2 border-t-slate-500 border-l-slate-500 border-r-slate-950 border-b-slate-950 text-white hover:bg-slate-800 transition-none"
@@ -114,106 +58,72 @@ export const ConsoleContact: React.FC = () => {
                   </div>
                   <div>
                     <div className="text-[11px] text-slate-400 uppercase">[ REPOSITÓRIOS ]</div>
-                    <div className="text-sm font-bold text-white">@fehhpaes</div>
+                    <div className="text-sm font-bold text-white">{contact.githubUsername}</div>
                   </div>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Form Column */}
+          {/* Direct Transmission Action Cards */}
           <div className="lg:col-span-7">
-            <div className="bg-gradient-to-b from-[#0a256b] via-[#081b4f] to-[#040d2b] border-4 border-t-white border-l-white border-r-slate-500 border-b-slate-600 p-6 shadow-[6px_6px_0px_#000]">
+            <div className="bg-gradient-to-b from-[#0a256b] via-[#081b4f] to-[#040d2b] border-4 border-t-white border-l-white border-r-slate-500 border-b-slate-600 p-6 shadow-[6px_6px_0px_#000] space-y-4">
               
-              {/* Success State */}
-              {status === 'success' && (
-                <div className="mb-4 p-3 bg-blue-950 border-2 border-emerald-400 text-emerald-300 flex items-start gap-2 font-pixel text-base">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block">[ SUCESSO: MENSAGEM GRAVADA ]</span>
-                    Sua missiva foi salva no Memory Card. Responderei em breve.
+              <div className="border-b-2 border-blue-400/40 pb-3">
+                <h4 className="font-pixel text-xl text-yellow-300 uppercase flex items-center gap-2 drop-shadow-[1px_1px_0px_#000]">
+                  <Radio className="w-5 h-5 text-cyan-300" />
+                  <span>Canais de Transmissão Direta</span>
+                </h4>
+                <p className="text-xs font-sans text-slate-200 mt-1">
+                  Selecione um canal para estabelecer conexão de alta velocidade:
+                </p>
+              </div>
+
+              {/* Direct Mail Action */}
+              <a
+                href={`mailto:${contact.email}`}
+                className="group block p-4 bg-[#050b1c] border-2 border-t-emerald-400 border-l-emerald-400 border-r-emerald-950 border-b-emerald-950 hover:bg-emerald-950/50 transition-none shadow-[4px_4px_0px_#000]"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 bg-emerald-950 border border-emerald-400 text-emerald-300">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="font-pixel text-xs text-emerald-300 uppercase tracking-wider">[ FREQUÊNCIA: E-MAIL ]</div>
+                      <div className="font-pixel text-xl text-white group-hover:text-yellow-300">{contact.email}</div>
+                    </div>
                   </div>
+                  <Send className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-              )}
+              </a>
 
-              {/* Error State */}
-              {status === 'error' && (
-                <div className="mb-4 p-3 bg-blue-950 border-2 border-red-400 text-red-300 flex items-start gap-2 font-pixel text-base">
-                  <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block">[ ERRO NO ENVIO ]</span>
-                    {errorMessage}
+              {/* Direct WhatsApp Action */}
+              <a
+                href={contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block p-4 bg-[#050b1c] border-2 border-t-emerald-400 border-l-emerald-400 border-r-emerald-950 border-b-emerald-950 hover:bg-emerald-950/50 transition-none shadow-[4px_4px_0px_#000]"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 bg-emerald-950 border border-emerald-400 text-emerald-300">
+                      <svg className="w-5 h-5 text-emerald-300" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.62.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-pixel text-xs text-emerald-300 uppercase tracking-wider">[ FREQUÊNCIA: WHATSAPP ]</div>
+                      <div className="font-pixel text-xl text-white group-hover:text-yellow-300">{contact.phone}</div>
+                    </div>
                   </div>
+                  <Send className="w-5 h-5 text-emerald-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-              )}
+              </a>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="console-name" className="block font-pixel text-lg uppercase text-yellow-300 mb-1 drop-shadow-[1px_1px_0px_#000]">
-                    Nome do Jogador / Contato
-                  </label>
-                  <input
-                    id="console-name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Seu nome"
-                    className="w-full px-3.5 py-2 bg-[#050b1c] border-2 border-t-blue-950 border-l-blue-950 border-r-blue-400 border-b-blue-400 text-white placeholder-slate-500 text-sm font-sans focus:outline-none focus:border-yellow-400"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="console-email" className="block font-pixel text-lg uppercase text-yellow-300 mb-1 drop-shadow-[1px_1px_0px_#000]">
-                    Endereço de E-mail
-                  </label>
-                  <input
-                    id="console-email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="seu.email@dominio.com"
-                    className="w-full px-3.5 py-2 bg-[#050b1c] border-2 border-t-blue-950 border-l-blue-950 border-r-blue-400 border-b-blue-400 text-white placeholder-slate-500 text-sm font-sans focus:outline-none focus:border-yellow-400"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="console-message" className="block font-pixel text-lg uppercase text-yellow-300 mb-1 drop-shadow-[1px_1px_0px_#000]">
-                    Mensagem / Proposta de Projeto
-                  </label>
-                  <textarea
-                    id="console-message"
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Descreva os detalhes da proposta ou missão..."
-                    className="w-full px-3.5 py-2 bg-[#050b1c] border-2 border-t-blue-950 border-l-blue-950 border-r-blue-400 border-b-blue-400 text-white placeholder-slate-500 text-sm font-sans focus:outline-none focus:border-yellow-400 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-blue-700 text-white font-pixel text-2xl uppercase border-2 border-t-white border-l-white border-r-blue-950 border-b-blue-950 hover:bg-blue-600 active:translate-y-0.5 drop-shadow-[2px_2px_0px_#000] transition-none disabled:opacity-50 cursor-pointer"
-                >
-                  {status === 'loading' ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>GRAVANDO DADOS...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>DESPACHAR MENSAGEM</span>
-                    </>
-                  )}
-                </button>
-              </form>
+              <div className="p-2.5 bg-[#050b1c] border border-blue-950 text-[11px] text-slate-300 font-sans text-center">
+                Base: {personal.location} • Disponibilidade Imediata para Contratação.
+              </div>
 
             </div>
           </div>

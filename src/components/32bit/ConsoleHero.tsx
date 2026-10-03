@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Disc, Save, MapPin, Globe, GraduationCap, Play, HardDrive } from 'lucide-react';
+import { Save, MapPin, Globe, GraduationCap, Play } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const ConsoleHero: React.FC = () => {
+  const { personal, bio, contact } = profileData;
+
   return (
     <header id="inicio" className="py-12 border-b-4 border-slate-700">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -23,17 +26,24 @@ export const ConsoleHero: React.FC = () => {
           </div>
 
           {/* Main Character Header */}
-          <div className="text-center mb-6">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-pixel font-bold text-white tracking-wide drop-shadow-[3px_3px_0px_#000] mb-2">
-              Felipe Paes da Silva
-            </h1>
-            <div className="flex flex-wrap items-center justify-center gap-2 font-pixel text-lg sm:text-xl">
-              <span className="px-2.5 py-0.5 bg-blue-950 text-cyan-300 border border-cyan-400 drop-shadow-[1px_1px_0px_#000]">
-                [ CLASSE: DESENVOLVEDOR MULTIPLATAFORMA ]
-              </span>
-              <span className="px-2.5 py-0.5 bg-blue-950 text-yellow-300 border border-yellow-400 drop-shadow-[1px_1px_0px_#000]">
-                [ ORIGEM: CIÊNCIAS HUMANAS ]
-              </span>
+          <div className="flex flex-col md:flex-row items-center justify-center mb-6 text-center md:text-left">
+            <img
+              src="/profile.jpeg"
+              alt="Felipe Paes da Silva"
+              className="w-24 h-24 md:w-28 md:h-28 object-cover border-2 border-gray-400 rounded-sm mb-4 md:mb-0 md:mr-6 brightness-90 contrast-125 shrink-0 shadow-[4px_4px_0px_#000]"
+            />
+            <div>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-pixel font-bold text-white tracking-wide drop-shadow-[3px_3px_0px_#000] mb-2">
+                {personal.name}
+              </h1>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 font-pixel text-lg sm:text-xl">
+                <span className="px-2.5 py-0.5 bg-blue-950 text-cyan-300 border border-cyan-400 drop-shadow-[1px_1px_0px_#000]">
+                  [ CLASSE: {personal.shortRole.toUpperCase()} ]
+                </span>
+                <span className="px-2.5 py-0.5 bg-blue-950 text-yellow-300 border border-yellow-400 drop-shadow-[1px_1px_0px_#000]">
+                  [ ORIGEM: CIÊNCIAS HUMANAS ]
+                </span>
+              </div>
             </div>
           </div>
 
@@ -45,7 +55,7 @@ export const ConsoleHero: React.FC = () => {
               <div className="text-xs text-red-400 uppercase flex items-center justify-center gap-1 mb-1">
                 <MapPin className="w-3.5 h-3.5" /> [ MEMORY SLOT 1 ]
               </div>
-              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Sorocaba, SP</div>
+              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">{personal.location}</div>
               <div className="text-[10px] text-slate-400 mt-1">1 BLOCK • BASE SYSTEM</div>
             </div>
 
@@ -54,7 +64,7 @@ export const ConsoleHero: React.FC = () => {
               <div className="text-xs text-cyan-300 uppercase flex items-center justify-center gap-1 mb-1">
                 <Globe className="w-3.5 h-3.5" /> [ MEMORY SLOT 2 ]
               </div>
-              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Inglês</div>
+              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">{personal.languages}</div>
               <div className="text-[10px] text-slate-400 mt-1">1 BLOCK • COMMS MODULE</div>
             </div>
 
@@ -63,7 +73,7 @@ export const ConsoleHero: React.FC = () => {
               <div className="text-xs text-yellow-300 uppercase flex items-center justify-center gap-1 mb-1">
                 <GraduationCap className="w-3.5 h-3.5" /> [ MEMORY SLOT 3 ]
               </div>
-              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Uniso, Uninter, Fatec & Etec</div>
+              <div className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">{personal.education}</div>
               <div className="text-[10px] text-slate-400 mt-1">1 BLOCK • EXPERIÊNCIA</div>
             </div>
 
@@ -72,7 +82,7 @@ export const ConsoleHero: React.FC = () => {
           {/* Narrative Text Box */}
           <div className="p-4 bg-[#050b1c]/80 border-2 border-blue-400/40 text-slate-200 text-sm sm:text-base font-sans leading-relaxed text-justify mb-6">
             <p>
-              Desenvolvedor focado no ecossistema JavaScript e TypeScript. A minha trajetória é um pouco diferente: formei-me em História e Geografia, o que me deu uma base analítica forte para entender os problemas de negócio a fundo. Atualmente, curso Desenvolvimento de Software Multiplataforma na Fatec e atuo na gestão da infraestrutura de TI da Etec Armando Pannunzio.
+              {bio.fullSynopsis}
             </p>
           </div>
 
@@ -87,7 +97,7 @@ export const ConsoleHero: React.FC = () => {
             </a>
 
             <a
-              href="https://github.com/fehhpaes"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800 text-slate-200 text-xl uppercase border-2 border-t-slate-500 border-l-slate-500 border-r-slate-950 border-b-slate-950 hover:bg-slate-700 active:translate-y-0.5 drop-shadow-[2px_2px_0px_#000] transition-none"
@@ -97,7 +107,7 @@ export const ConsoleHero: React.FC = () => {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-900 text-yellow-300 text-xl uppercase border-2 border-t-blue-400 border-l-blue-400 border-r-blue-950 border-b-blue-950 hover:bg-blue-800 active:translate-y-0.5 drop-shadow-[2px_2px_0px_#000] transition-none"

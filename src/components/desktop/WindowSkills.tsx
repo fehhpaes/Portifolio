@@ -2,76 +2,14 @@
 
 import React from 'react';
 import { Settings, Server, Cloud, Database, Globe } from 'lucide-react';
+import { skillsData, SkillCategory } from '@/data/profile';
 
-interface SkillCategory {
-  title: string;
-  code: string;
-  description: string;
-  icon: React.ReactNode;
-  skills: {
-    name: string;
-    level: string;
-  }[];
-}
-
-const skillCategories: SkillCategory[] = [
-  {
-    title: 'Frontend & Mobile Applets',
-    code: 'MOD.01',
-    description: 'Interfaces interativas, navegação fluida e precisão de layout.',
-    icon: <Globe className="w-4 h-4 text-blue-800" />,
-    skills: [
-      { name: 'React', level: 'RANK: AVANÇADO' },
-      { name: 'Next.js (App Router)', level: 'RANK: AVANÇADO' },
-      { name: 'TypeScript', level: 'RANK: AVANÇADO' },
-      { name: 'Tailwind CSS', level: 'RANK: AVANÇADO' },
-      { name: 'React Native & Expo', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'NativeWind', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-  {
-    title: 'Serviços de Rede & Backend',
-    code: 'MOD.02',
-    description: 'Microsserviços, lógica de negócios resiliente e endpoints estruturados.',
-    icon: <Server className="w-4 h-4 text-emerald-800" />,
-    skills: [
-      { name: 'Node.js', level: 'RANK: AVANÇADO' },
-      { name: 'Express', level: 'RANK: AVANÇADO' },
-      { name: 'REST APIs & Endpoints', level: 'RANK: AVANÇADO' },
-      { name: 'JWT & Autenticação', level: 'RANK: AVANÇADO' },
-      { name: 'Nodemailer & Webhooks', level: 'RANK: AVANÇADO' },
-      { name: 'Playwright & Scraping', level: 'RANK: AVANÇADO' },
-    ],
-  },
-  {
-    title: 'Infraestrutura & DevOps',
-    code: 'MOD.03',
-    description: 'Conteinerização, esteiras automatizadas de entrega e servidores Linux.',
-    icon: <Cloud className="w-4 h-4 text-blue-600" />,
-    skills: [
-      { name: 'Docker & Containers', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'GitHub Actions (CI/CD)', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'DigitalOcean Droplets', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'Linux / Bash Scripting', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'Git & Versionamento', level: 'RANK: AVANÇADO' },
-      { name: 'Electron (Desktop Apps)', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-  {
-    title: 'Gerenciador de Bancos de Dados',
-    code: 'MOD.04',
-    description: 'Modelagem persistente, integridade de dados e consultas estruturadas.',
-    icon: <Database className="w-4 h-4 text-amber-800" />,
-    skills: [
-      { name: 'MongoDB & Mongoose', level: 'RANK: AVANÇADO' },
-      { name: 'PostgreSQL', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'MySQL', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'AsyncStorage & Local Data', level: 'RANK: AVANÇADO' },
-      { name: 'Modelagem NoSQL & Relacional', level: 'RANK: AVANÇADO' },
-      { name: 'Consultas & Indexação', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-];
+const categoryIconMap: Record<string, React.ReactNode> = {
+  frontend: <Globe className="w-4 h-4 text-blue-800" />,
+  backend: <Server className="w-4 h-4 text-emerald-800" />,
+  devops: <Cloud className="w-4 h-4 text-blue-600" />,
+  database: <Database className="w-4 h-4 text-amber-800" />,
+};
 
 export const WindowSkills: React.FC = () => {
   return (
@@ -108,20 +46,20 @@ export const WindowSkills: React.FC = () => {
 
         {/* Categories Grid */}
         <div className="p-4 bg-white border-2 border-t-black border-l-black border-r-white border-b-white grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skillCategories.map((category) => (
+          {skillsData.filter((c) => ['frontend', 'backend', 'devops', 'database'].includes(c.id)).map((category) => (
             <div
-              key={category.title}
+              key={category.id}
               className="p-3 bg-[#f0f0f0] border border-slate-400"
             >
               <div className="flex items-center justify-between pb-2 border-b border-slate-300 mb-2">
                 <div className="flex items-center gap-2">
-                  {category.icon}
+                  {categoryIconMap[category.id] || <Globe className="w-4 h-4 text-blue-800" />}
                   <h4 className="font-bold text-xs text-black font-sans">
-                    {category.title}
+                    {category.themeTitles.desktop}
                   </h4>
                 </div>
                 <span className="text-[10px] font-mono text-slate-500 font-bold">
-                  {category.code}
+                  {category.themeCodes.desktop}
                 </span>
               </div>
 
@@ -138,7 +76,7 @@ export const WindowSkills: React.FC = () => {
                   >
                     <span>{skill.name}</span>
                     <span className="text-[10px] font-mono font-bold text-blue-900 border-l border-slate-300 pl-1">
-                      [{skill.level}]
+                      [RANK: {skill.level.toUpperCase()}]
                     </span>
                   </div>
                 ))}

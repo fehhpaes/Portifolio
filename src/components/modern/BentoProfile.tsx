@@ -1,7 +1,28 @@
-import React from 'react';
-import { Sparkles, Bot, GraduationCap, MapPin, Briefcase } from 'lucide-react';
+'use client';
+
+import React, { useState } from 'react';
+import { Sparkles, Bot, MapPin } from 'lucide-react';
+import { profileData } from '@/data/profile';
+
+const AVATAR_SOURCES = [
+  '/profile.jpeg',
+  '/profile.png',
+  '/profile.webp',
+];
 
 export default function BentoProfile() {
+  const [imgIndex, setImgIndex] = useState(0);
+  const [imgError, setImgError] = useState(false);
+  const { personal, bio } = profileData;
+
+  const handleImageError = () => {
+    if (imgIndex < AVATAR_SOURCES.length - 1) {
+      setImgIndex((prev) => prev + 1);
+    } else {
+      setImgError(true);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-neutral-900 border border-white/10 hover:bg-neutral-800/80 transition-colors shadow-xl group">
       <div>
@@ -9,33 +30,45 @@ export default function BentoProfile() {
         <div className="flex flex-wrap items-center gap-2 mb-5">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            Disponível para Contratação
+            {personal.status}
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-neutral-300 border border-white/10">
             <MapPin className="w-3 h-3 text-neutral-400" />
-            Sorocaba, SP
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-            <Briefcase className="w-3 h-3 text-indigo-400" />
-            Auxiliar Docente @ Etec
+            {personal.location}
           </span>
         </div>
 
-        {/* Hero Title & Subtitle */}
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
-          Felipe Paes da Silva
-        </h1>
-        <p className="text-base sm:text-lg font-medium text-neutral-400 mb-6">
-          Desenvolvedor Full Stack & Multiplataforma • Next.js, React, Node.js & TypeScript
-        </p>
+        {/* Profile Header with Avatar & Info */}
+        <div className="flex flex-col md:flex-row items-start md:items-center mb-6">
+          {!imgError ? (
+            <img
+              src={AVATAR_SOURCES[imgIndex]}
+              alt={personal.name}
+              onError={handleImageError}
+              className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-neutral-700 object-cover mb-4 md:mb-0 md:mr-6 shrink-0 shadow-md bg-neutral-800"
+            />
+          ) : (
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-2 border-neutral-700 bg-gradient-to-br from-indigo-600/30 to-purple-600/30 flex items-center justify-center text-xl sm:text-2xl font-bold text-white mb-4 md:mb-0 md:mr-6 shrink-0 shadow-md">
+              FP
+            </div>
+          )}
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
+              {personal.name}
+            </h1>
+            <p className="text-base sm:text-lg font-medium text-neutral-400">
+              {personal.role}
+            </p>
+          </div>
+        </div>
 
         {/* Humanized Narrative */}
         <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed">
           <p>
-            Sou um desenvolvedor focado em entender o <strong className="text-white">contexto e a regra de negócio</strong> antes de escrever qualquer linha de código. Minha base inicial em <strong className="text-white">Ciências Humanas (História & Geografia)</strong> combinada com a graduação em <strong className="text-white">Desenvolvimento de Software Multiplataforma (Fatec)</strong> me confere visão sistêmica, comunicação clara e precisão arquitetural.
+            {bio.intro}
           </p>
           <p>
-            No dia a dia, gerencio ambientes e auxilio turmas técnicas na <strong className="text-white">Etec Armando Pannunzio</strong>, vivenciando na prática resolução de problemas, governança e deploy contínuo.
+            {bio.experience}
           </p>
         </div>
       </div>
@@ -51,7 +84,7 @@ export default function BentoProfile() {
             <Sparkles className="w-3 h-3 text-amber-400" />
           </h2>
           <p className="text-xs text-neutral-300 leading-relaxed">
-            Utilizo <strong>Inteligência Artificial</strong> diariamente como ferramenta estratégica de <em>pair programming</em> — acelerando prototipagem, automação de testes, refatorações e documentação, sempre com rigor técnico e validação humana.
+            {bio.aiWorkflow}
           </p>
         </div>
       </div>

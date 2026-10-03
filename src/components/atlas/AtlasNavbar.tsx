@@ -3,8 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { Compass, BookMarked, Sparkles } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export const AtlasNavbar: React.FC = () => {
+  const { personal } = profileData;
+
   return (
     <nav className="sticky top-0 z-40 bg-[#F4F1EA]/90 backdrop-blur-sm border-b border-stone-300 py-3">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
@@ -12,7 +15,7 @@ export const AtlasNavbar: React.FC = () => {
         {/* Brand */}
         <a href="#" className="flex items-center gap-2 text-stone-900 font-serif text-lg tracking-tight">
           <Compass className="w-4 h-4 text-amber-900" />
-          <span className="font-medium">Felipe Paes da Silva</span>
+          <span className="font-medium">{personal.name}</span>
         </a>
 
         {/* Section Links & Mode Switch */}

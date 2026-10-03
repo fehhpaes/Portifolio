@@ -2,76 +2,14 @@
 
 import React from 'react';
 import { Server, Cloud, Database, Globe } from 'lucide-react';
+import { skillsData, SkillCategory } from '@/data/profile';
 
-interface SkillCategory {
-  title: string;
-  code: string;
-  description: string;
-  icon: React.ReactNode;
-  skills: {
-    name: string;
-    level: string;
-  }[];
-}
-
-const skillCategories: SkillCategory[] = [
-  {
-    title: 'Desenvolvimento Frontend & Mobile',
-    code: 'TOMO I',
-    description: 'Interfaces interativas, navegação fluida e precisão de layout.',
-    icon: <Globe className="w-4 h-4 text-amber-900" />,
-    skills: [
-      { name: 'React', level: 'Avançado' },
-      { name: 'Next.js (App Router)', level: 'Avançado' },
-      { name: 'TypeScript', level: 'Avançado' },
-      { name: 'Tailwind CSS', level: 'Avançado' },
-      { name: 'React Native & Expo', level: 'Intermediário' },
-      { name: 'NativeWind', level: 'Intermediário' },
-    ],
-  },
-  {
-    title: 'Engenharia Backend & APIs',
-    code: 'TOMO II',
-    description: 'Microsserviços, lógica de negócios resiliente e endpoints estruturados.',
-    icon: <Server className="w-4 h-4 text-amber-900" />,
-    skills: [
-      { name: 'Node.js', level: 'Avançado' },
-      { name: 'Express', level: 'Avançado' },
-      { name: 'REST APIs & Endpoints', level: 'Avançado' },
-      { name: 'JWT & Autenticação', level: 'Avançado' },
-      { name: 'Nodemailer & Webhooks', level: 'Avançado' },
-      { name: 'Playwright & Scraping', level: 'Avançado' },
-    ],
-  },
-  {
-    title: 'DevOps & Infraestrutura em Nuvem',
-    code: 'TOMO III',
-    description: 'Conteinerização, esteiras automatizadas de entrega e servidores Linux.',
-    icon: <Cloud className="w-4 h-4 text-amber-900" />,
-    skills: [
-      { name: 'Docker & Containers', level: 'Intermediário' },
-      { name: 'GitHub Actions (CI/CD)', level: 'Intermediário' },
-      { name: 'DigitalOcean Droplets', level: 'Intermediário' },
-      { name: 'Linux / Bash Scripting', level: 'Intermediário' },
-      { name: 'Git & Versionamento', level: 'Avançado' },
-      { name: 'Electron (Desktop Apps)', level: 'Intermediário' },
-    ],
-  },
-  {
-    title: 'Persistência & Bancos de Dados',
-    code: 'TOMO IV',
-    description: 'Modelagem relacional e documental, integridade e consultas.',
-    icon: <Database className="w-4 h-4 text-amber-900" />,
-    skills: [
-      { name: 'MongoDB & Mongoose', level: 'Avançado' },
-      { name: 'PostgreSQL', level: 'Intermediário' },
-      { name: 'MySQL', level: 'Intermediário' },
-      { name: 'AsyncStorage & Local Data', level: 'Avançado' },
-      { name: 'Modelagem NoSQL & Relacional', level: 'Avançado' },
-      { name: 'Consultas & Indexação', level: 'Intermediário' },
-    ],
-  },
-];
+const categoryIconMap: Record<string, React.ReactNode> = {
+  frontend: <Globe className="w-4 h-4 text-amber-900" />,
+  backend: <Server className="w-4 h-4 text-amber-900" />,
+  devops: <Cloud className="w-4 h-4 text-amber-900" />,
+  database: <Database className="w-4 h-4 text-amber-900" />,
+};
 
 export const AtlasSkills: React.FC = () => {
   return (
@@ -94,20 +32,20 @@ export const AtlasSkills: React.FC = () => {
 
         {/* Clean Columns Index */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category) => (
+          {skillsData.filter((c) => ['frontend', 'backend', 'devops', 'database'].includes(c.id)).map((category) => (
             <div
-              key={category.title}
+              key={category.id}
               className="p-6 bg-stone-100/70 border border-stone-300"
             >
               <div className="flex items-center justify-between pb-3 border-b border-stone-300 mb-3">
                 <div className="flex items-center gap-2">
-                  {category.icon}
+                  {categoryIconMap[category.id] || <Globe className="w-4 h-4 text-amber-900" />}
                   <h3 className="font-serif text-lg font-medium text-stone-900">
-                    {category.title}
+                    {category.themeTitles.atlas}
                   </h3>
                 </div>
                 <span className="text-xs font-serif uppercase tracking-wider text-amber-900">
-                  {category.code}
+                  {category.themeCodes.atlas}
                 </span>
               </div>
 

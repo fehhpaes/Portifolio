@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, FolderGit2, CheckCircle2, Clock } from 'lucide-react';
 import { GithubIcon } from '@/components/Icons';
-import { projects } from '@/data/projects';
+import { projectsData } from '@/data/profile';
 
 export default function BentoProjects() {
   return (
@@ -30,7 +30,7 @@ export default function BentoProjects() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map((proj) => {
+        {projectsData.map((proj) => {
           const isCompleted = proj.status === 'Missão Concluída';
 
           return (

@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { projects, Project } from '@/data/projects';
+import { projectsData, ProjectItem } from '@/data/profile';
 import { ExternalLink, Scroll, ShieldCheck, Sparkles, Sword } from 'lucide-react';
 import { GithubIcon } from '@/components/Icons';
 
-const getCategoryIcon = (category: Project['category']) => {
+const getCategoryIcon = (category: ProjectItem['category']) => {
   switch (category) {
     case 'Full-Stack':
       return <Sword className="w-4 h-4 text-emerald-400" />;
@@ -23,8 +23,8 @@ export const Projects: React.FC = () => {
 
   const filteredProjects =
     filter === 'Todos'
-      ? projects
-      : projects.filter((p) => p.category === filter);
+      ? projectsData
+      : projectsData.filter((p) => p.category === filter);
 
   return (
     <section id="projetos" className="py-20 relative bg-[#09090e] border-b-4 border-amber-600/80">

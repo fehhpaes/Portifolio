@@ -1,26 +1,29 @@
 import React from 'react';
 import { MapPin, Languages, School, Cpu, Sparkles } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export default function BentoStats() {
+  const { personal } = profileData;
+
   const stats = [
     {
       icon: MapPin,
       label: 'Localização & Base',
-      value: 'Sorocaba, SP',
+      value: personal.location,
       detail: 'Disponível para Remoto / Híbrido / Presencial',
       accent: 'from-blue-500/20 to-cyan-500/20 text-cyan-400',
     },
     {
       icon: Languages,
       label: 'Idiomas',
-      value: 'Inglês',
+      value: personal.languages,
       detail: 'Leitura técnica fluente e comunicação profissional',
       accent: 'from-indigo-500/20 to-purple-500/20 text-indigo-400',
     },
     {
       icon: School,
       label: 'Academia & Formação',
-      value: 'Uniso, Uninter, Fatec & Etec',
+      value: personal.education,
       detail: 'História, Geografia & Desenv. Software Multiplataforma',
       accent: 'from-emerald-500/20 to-teal-500/20 text-emerald-400',
     },

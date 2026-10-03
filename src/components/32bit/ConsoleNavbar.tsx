@@ -3,8 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { Disc, Gamepad2, Sparkles, Compass } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export const ConsoleNavbar: React.FC = () => {
+  const { personal } = profileData;
+
   return (
     <nav className="sticky top-0 z-40 bg-[#06102b] border-b-4 border-t-white border-l-white border-r-slate-500 border-b-slate-700 py-3 shadow-2xl">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
@@ -15,7 +18,7 @@ export const ConsoleNavbar: React.FC = () => {
             <Gamepad2 className="w-5 h-5" />
           </div>
           <span>
-            FELIPE PAES DA SILVA <span className="text-yellow-300 text-lg">[32-BIT SYSTEM]</span>
+            {personal.name.toUpperCase()} <span className="text-yellow-300 text-lg">[32-BIT SYSTEM]</span>
           </span>
         </a>
 

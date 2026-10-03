@@ -1,61 +1,19 @@
 import React from 'react';
-import { Code2, Server, Database, Wrench } from 'lucide-react';
+import { Code2, Server, Database, Wrench, Cloud } from 'lucide-react';
+import { skillsData, SkillCategory } from '@/data/profile';
 
-interface Skill {
-  name: string;
-  level: 'Avançado' | 'Intermediário';
-}
-
-interface SkillGroup {
-  title: string;
-  icon: React.ElementType;
-  skills: Skill[];
-}
+const categoryIconMap: Record<string, React.ElementType> = {
+  frontend: Code2,
+  backend: Server,
+  devops: Cloud,
+  database: Database,
+  workflow: Wrench,
+};
 
 export default function BentoSkills() {
-  const skillGroups: SkillGroup[] = [
-    {
-      title: 'Frontend Architecture',
-      icon: Code2,
-      skills: [
-        { name: 'React', level: 'Avançado' },
-        { name: 'Next.js', level: 'Avançado' },
-        { name: 'TypeScript', level: 'Avançado' },
-        { name: 'Tailwind CSS', level: 'Avançado' },
-        { name: 'HTML5 & CSS3', level: 'Avançado' },
-      ],
-    },
-    {
-      title: 'Backend & APIs',
-      icon: Server,
-      skills: [
-        { name: 'Node.js', level: 'Avançado' },
-        { name: 'Express', level: 'Avançado' },
-        { name: 'RESTful APIs', level: 'Avançado' },
-        { name: 'Autenticação JWT', level: 'Intermediário' },
-      ],
-    },
-    {
-      title: 'Database & Cloud',
-      icon: Database,
-      skills: [
-        { name: 'MongoDB', level: 'Avançado' },
-        { name: 'PostgreSQL', level: 'Intermediário' },
-        { name: 'Docker', level: 'Intermediário' },
-        { name: 'DigitalOcean', level: 'Intermediário' },
-      ],
-    },
-    {
-      title: 'Workflow & Tools',
-      icon: Wrench,
-      skills: [
-        { name: 'Git & GitHub', level: 'Avançado' },
-        { name: 'Pair Programming c/ IA', level: 'Avançado' },
-        { name: 'Linux', level: 'Intermediário' },
-        { name: 'Scrum / Kanban', level: 'Avançado' },
-      ],
-    },
-  ];
+  const displayCategories = skillsData.filter((c) =>
+    ['frontend', 'backend', 'database', 'workflow'].includes(c.id)
+  );
 
   return (
     <div className="p-6 sm:p-8 rounded-3xl bg-neutral-900 border border-white/10 hover:bg-neutral-800/80 transition-colors shadow-xl flex flex-col justify-between">
@@ -84,16 +42,16 @@ export default function BentoSkills() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {skillGroups.map((group, idx) => {
-            const GroupIcon = group.icon;
+          {displayCategories.map((group) => {
+            const GroupIcon = categoryIconMap[group.id] || Code2;
             return (
               <div
-                key={idx}
+                key={group.id}
                 className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3"
               >
                 <div className="flex items-center gap-2 text-xs font-semibold text-neutral-300">
                   <GroupIcon className="w-4 h-4 text-neutral-400" />
-                  {group.title}
+                  {group.themeTitles.modern}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {group.skills.map((skill, sIdx) => {

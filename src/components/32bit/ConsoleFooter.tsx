@@ -4,8 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Gamepad2, ArrowUp, Sparkles, BookOpen } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const ConsoleFooter: React.FC = () => {
+  const { personal } = profileData;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -22,7 +25,7 @@ export const ConsoleFooter: React.FC = () => {
             </div>
             <div>
               <p className="text-white text-lg font-bold drop-shadow-[1px_1px_0px_#000]">
-                FELIPE PAES DA SILVA // 32-BIT ENGINE
+                {personal.name.toUpperCase()} // 32-BIT ENGINE
               </p>
               <p className="text-xs text-yellow-300">SONY PS1 & N64 RETRO HARDWARE SIMULATION</p>
             </div>

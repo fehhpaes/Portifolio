@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Layers, ChevronDown } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export default function BentoNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const { personal } = profileData;
 
   const versions = [
     { name: 'Modern Bento', href: '/', badge: 'Principal', current: true },
@@ -26,10 +28,10 @@ export default function BentoNav() {
           </div>
           <div>
             <span className="font-semibold tracking-tight text-white text-sm sm:text-base">
-              Felipe Paes da Silva
+              {personal.name}
             </span>
             <span className="hidden sm:inline-block text-neutral-400 text-xs ml-2 border-l border-white/10 pl-2">
-              Software Developer • Multiplataforma
+              {personal.shortRole}
             </span>
           </div>
         </div>

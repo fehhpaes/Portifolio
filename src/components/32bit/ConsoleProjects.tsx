@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { projects, Project } from '@/data/projects';
+import { projectsData, ProjectItem } from '@/data/profile';
 import { Disc, ExternalLink, Play, CheckCircle2, AlertCircle } from 'lucide-react';
 import { GithubIcon } from '@/components/Icons';
 
@@ -12,8 +12,8 @@ export const ConsoleProjects: React.FC = () => {
 
   const filteredProjects =
     filter === 'Todos'
-      ? projects
-      : projects.filter((p) => p.category === filter);
+      ? projectsData
+      : projectsData.filter((p) => p.category === filter);
 
   return (
     <section id="projetos" className="py-12 border-b-4 border-slate-700">

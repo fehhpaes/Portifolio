@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { FileText } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export const WindowAbout: React.FC = () => {
+  const { bio } = profileData;
+
   return (
     <section id="sobre" className="my-6">
       {/* Notepad Window Container */}
@@ -41,15 +44,15 @@ export const WindowAbout: React.FC = () => {
         {/* Notepad White Document Body */}
         <div className="p-5 bg-white border-2 border-t-black border-l-black border-r-white border-b-white text-xs sm:text-sm font-sans text-black leading-relaxed space-y-4 text-justify min-h-[220px]">
           <p>
-            Sou o <strong>Felipe</strong>, um desenvolvedor que gosta de entender o &apos;porquê&apos; antes de construir o &apos;como&apos;. Minha jornada na tecnologia tem um background um pouco diferente: vim de uma base sólida em Ciências Humanas, com licenciaturas em <strong>História (Uniso)</strong> e <strong>Geografia (Uninter)</strong>. Essa trajetória me deu uma capacidade investigativa forte para entender o contexto real e as regras de negócio antes de escrever qualquer linha de código.
+            {bio.storyNarrative}
           </p>
 
           <p>
-            Atualmente, curso Desenvolvimento de Software Multiplataforma na <strong>Fatec</strong> e atuo como Auxiliar Docente em Informática na <strong>Etec Armando Pannunzio</strong>. O dia a dia gerenciando a infraestrutura dos laboratórios me ensina constantemente a traduzir problemas técnicos complexos para uma comunicação clara com os alunos e professores.
+            {bio.experience}
           </p>
 
           <p>
-            No ecossistema de desenvolvimento, meu foco está em <strong>JavaScript</strong> e <strong>TypeScript</strong>, criando desde interfaces até APIs e automações. Utilizo inteligência artificial como uma ferramenta diária de &apos;pair-programming&apos; para acelerar a codificação, o que me permite focar no que realmente importa: a arquitetura do software e a resolução do problema. Fora do código, mantenho o foco no aprimoramento do meu Inglês e, para descontrair, minha principal missão secundária é tirar novas músicas no violão e no cavaquinho.
+            {bio.techFocus}
           </p>
         </div>
 

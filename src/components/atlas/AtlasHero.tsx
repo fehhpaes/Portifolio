@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Globe, GraduationCap, ArrowDown, BookOpen, ExternalLink } from 'lucide-react';
+import { MapPin, Globe, GraduationCap, BookOpen } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const AtlasHero: React.FC = () => {
+  const { personal, bio, contact } = profileData;
+
   return (
     <header className="relative pt-12 pb-16 border-b border-stone-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -16,13 +19,20 @@ export const AtlasHero: React.FC = () => {
         </div>
 
         {/* Thesis Author Title */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-stone-900 font-normal tracking-tight mb-3">
-            Felipe Paes da Silva
-          </h1>
-          <p className="font-serif italic text-xl sm:text-2xl text-amber-900">
-            Desenvolvedor de Software Multiplataforma
-          </p>
+        <div className="flex flex-col md:flex-row items-center justify-center mb-10 text-center md:text-left">
+          <img
+            src="/profile.jpeg"
+            alt="Felipe Paes da Silva"
+            className="w-28 h-28 md:w-32 md:h-32 object-cover rounded-full grayscale sepia-[.4] border-4 border-double border-[#8b7355] shadow-lg mb-6 md:mb-0 md:mr-8 shrink-0"
+          />
+          <div>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-stone-900 font-normal tracking-tight mb-3">
+              {personal.name}
+            </h1>
+            <p className="font-serif italic text-xl sm:text-2xl text-amber-900">
+              {personal.shortRole}
+            </p>
+          </div>
         </div>
 
         {/* Metadata Grid (Historical Thesis Format) */}
@@ -31,7 +41,7 @@ export const AtlasHero: React.FC = () => {
             <MapPin className="w-4 h-4 text-amber-900 shrink-0" />
             <div>
               <span className="block text-[11px] font-serif uppercase tracking-wider text-stone-500">Localização</span>
-              <span className="text-sm font-sans font-medium text-stone-800">Sorocaba, SP</span>
+              <span className="text-sm font-sans font-medium text-stone-800">{personal.location}</span>
             </div>
           </div>
 
@@ -39,7 +49,7 @@ export const AtlasHero: React.FC = () => {
             <Globe className="w-4 h-4 text-amber-900 shrink-0" />
             <div>
               <span className="block text-[11px] font-serif uppercase tracking-wider text-stone-500">Idiomas</span>
-              <span className="text-sm font-sans font-medium text-stone-800">Inglês</span>
+              <span className="text-sm font-sans font-medium text-stone-800">{personal.languages}</span>
             </div>
           </div>
 
@@ -47,7 +57,7 @@ export const AtlasHero: React.FC = () => {
             <GraduationCap className="w-4 h-4 text-amber-900 shrink-0" />
             <div>
               <span className="block text-[11px] font-serif uppercase tracking-wider text-stone-500">Instituições (XP)</span>
-              <span className="text-sm font-sans font-medium text-stone-800">Uniso, Uninter, Fatec & Etec</span>
+              <span className="text-sm font-sans font-medium text-stone-800">{personal.education}</span>
             </div>
           </div>
         </div>
@@ -55,7 +65,7 @@ export const AtlasHero: React.FC = () => {
         {/* Synopsis Narrative */}
         <div className="text-base sm:text-lg text-stone-700 leading-relaxed max-w-3xl mx-auto font-sans text-justify mb-8">
           <p>
-            Desenvolvedor focado no ecossistema JavaScript e TypeScript. A minha trajetória é um pouco diferente: formei-me em História e Geografia, o que me deu uma base analítica forte para entender os problemas de negócio a fundo. Atualmente, curso Desenvolvimento de Software Multiplataforma na Fatec e atuo na gestão da infraestrutura de TI da Etec Armando Pannunzio.
+            {bio.fullSynopsis}
           </p>
         </div>
 
@@ -70,7 +80,7 @@ export const AtlasHero: React.FC = () => {
           </a>
 
           <a
-            href="https://github.com/fehhpaes"
+            href={contact.github}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-100 text-stone-800 hover:bg-stone-200 border border-stone-300 transition-colors"
@@ -80,7 +90,7 @@ export const AtlasHero: React.FC = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+            href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-100 text-stone-800 hover:bg-stone-200 border border-stone-300 transition-colors"

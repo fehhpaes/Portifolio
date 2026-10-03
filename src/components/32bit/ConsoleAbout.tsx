@@ -1,9 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Terminal, Shield, Cpu, Layers, Server, Compass, GraduationCap } from 'lucide-react';
+import { Terminal, Layers, Server, Compass, GraduationCap } from 'lucide-react';
+import { profileData } from '@/data/profile';
 
 export const ConsoleAbout: React.FC = () => {
+  const { personal, bio } = profileData;
+
   return (
     <section id="sobre" className="py-12 border-b-4 border-slate-700">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -23,15 +26,15 @@ export const ConsoleAbout: React.FC = () => {
             
             <div className="space-y-4 text-white text-sm sm:text-base font-sans leading-relaxed text-justify drop-shadow-[1px_1px_0px_#000]">
               <p>
-                Sou o <strong className="text-yellow-300 font-pixel text-lg">Felipe</strong>, um desenvolvedor que gosta de entender o &apos;porquê&apos; antes de construir o &apos;como&apos;. Minha jornada na tecnologia tem um background um pouco diferente: vim de uma base sólida em Ciências Humanas, com licenciaturas em <strong className="text-cyan-200">História (Uniso)</strong> e <strong className="text-cyan-200">Geografia (Uninter)</strong>. Essa trajetória me deu uma capacidade investigativa forte para entender o contexto real e as regras de negócio antes de escrever qualquer linha de código.
+                {bio.storyNarrative}
               </p>
 
               <p>
-                Atualmente, curso Desenvolvimento de Software Multiplataforma na <strong className="text-cyan-200">Fatec</strong> e atuo como Auxiliar Docente em Informática na <strong className="text-cyan-200">Etec Armando Pannunzio</strong>. O dia a dia gerenciando a infraestrutura dos laboratórios me ensina constantemente a traduzir problemas técnicos complexos para uma comunicação clara com os alunos e professores.
+                Minha trajetória inclui a experiência como Auxiliar Docente em Informática na <strong className="text-cyan-200">Etec Armando Pannunzio</strong>, onde o gerenciamento da infraestrutura dos laboratórios me ensinou a traduzir problemas técnicos complexos para uma comunicação clara com os alunos e professores. Atualmente, dedico-me aos estudos na <strong className="text-cyan-200">Fatec</strong> e busco novas oportunidades focadas em código.
               </p>
 
               <p>
-                No ecossistema de desenvolvimento, meu foco está em <strong className="text-yellow-300">JavaScript</strong> e <strong className="text-yellow-300">TypeScript</strong>, criando desde interfaces até APIs e automações. Utilizo inteligência artificial como uma ferramenta diária de &apos;pair-programming&apos; para acelerar a codificação, o que me permite focar no que realmente importa: a arquitetura do software e a resolução do problema. Fora do código, mantenho o foco no aprimoramento do meu Inglês e, para descontrair, minha principal missão secundária é tirar novas músicas no violão e no cavaquinho.
+                {bio.techFocus}
               </p>
             </div>
 

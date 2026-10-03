@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { projects, Project } from '@/data/projects';
+import { projectsData, ProjectItem } from '@/data/profile';
 import { ExternalLink, BookOpen, Bookmark } from 'lucide-react';
 import { GithubIcon } from '@/components/Icons';
 
@@ -12,8 +12,8 @@ export const AtlasProjects: React.FC = () => {
 
   const filteredProjects =
     filter === 'Todos'
-      ? projects
-      : projects.filter((p) => p.category === filter);
+      ? projectsData
+      : projectsData.filter((p) => p.category === filter);
 
   const getRomanNumeral = (num: number) => {
     const romans = ['I', 'II', 'III', 'IV', 'V', 'VI'];

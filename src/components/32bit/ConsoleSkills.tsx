@@ -1,77 +1,15 @@
 'use client';
 
 import React from 'react';
-import { Server, Cloud, Database, Globe, Cpu, Zap, Shield } from 'lucide-react';
+import { Server, Cloud, Database, Globe, Cpu } from 'lucide-react';
+import { skillsData, SkillCategory } from '@/data/profile';
 
-interface SkillCategory {
-  title: string;
-  code: string;
-  description: string;
-  icon: React.ReactNode;
-  skills: {
-    name: string;
-    level: string;
-  }[];
-}
-
-const skillCategories: SkillCategory[] = [
-  {
-    title: 'Client Tier • Frontend & Mobile',
-    code: 'MATERIA 01',
-    description: 'Interfaces interativas, navegação fluida e controle de componentes.',
-    icon: <Globe className="w-5 h-5 text-cyan-300" />,
-    skills: [
-      { name: 'React', level: 'RANK: AVANÇADO' },
-      { name: 'Next.js (App Router)', level: 'RANK: AVANÇADO' },
-      { name: 'TypeScript', level: 'RANK: AVANÇADO' },
-      { name: 'Tailwind CSS', level: 'RANK: AVANÇADO' },
-      { name: 'React Native & Expo', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'NativeWind', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-  {
-    title: 'Server Tier • Backend & APIs',
-    code: 'MATERIA 02',
-    description: 'Microsserviços, lógica de negócios resiliente e endpoints estruturados.',
-    icon: <Server className="w-5 h-5 text-yellow-300" />,
-    skills: [
-      { name: 'Node.js', level: 'RANK: AVANÇADO' },
-      { name: 'Express', level: 'RANK: AVANÇADO' },
-      { name: 'REST APIs & Endpoints', level: 'RANK: AVANÇADO' },
-      { name: 'JWT & Autenticação', level: 'RANK: AVANÇADO' },
-      { name: 'Nodemailer & Webhooks', level: 'RANK: AVANÇADO' },
-      { name: 'Playwright & Scraping', level: 'RANK: AVANÇADO' },
-    ],
-  },
-  {
-    title: 'Cloud Runes • DevOps & Infra',
-    code: 'MATERIA 03',
-    description: 'Conteinerização, esteiras automatizadas de entrega e servidores Linux.',
-    icon: <Cloud className="w-5 h-5 text-blue-300" />,
-    skills: [
-      { name: 'Docker & Containers', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'GitHub Actions (CI/CD)', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'DigitalOcean Droplets', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'Linux / Bash Scripting', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'Git & Versionamento', level: 'RANK: AVANÇADO' },
-      { name: 'Electron (Desktop Apps)', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-  {
-    title: 'Data Archives • Bancos de Dados',
-    code: 'MATERIA 04',
-    description: 'Modelagem persistente, integridade de dados e consultas estruturadas.',
-    icon: <Database className="w-5 h-5 text-red-300" />,
-    skills: [
-      { name: 'MongoDB & Mongoose', level: 'RANK: AVANÇADO' },
-      { name: 'PostgreSQL', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'MySQL', level: 'RANK: INTERMEDIÁRIO' },
-      { name: 'AsyncStorage & Local Data', level: 'RANK: AVANÇADO' },
-      { name: 'Modelagem NoSQL & Relacional', level: 'RANK: AVANÇADO' },
-      { name: 'Consultas & Indexação', level: 'RANK: INTERMEDIÁRIO' },
-    ],
-  },
-];
+const categoryIconMap: Record<string, React.ReactNode> = {
+  frontend: <Globe className="w-5 h-5 text-cyan-300" />,
+  backend: <Server className="w-5 h-5 text-yellow-300" />,
+  devops: <Cloud className="w-5 h-5 text-blue-300" />,
+  database: <Database className="w-5 h-5 text-red-300" />,
+};
 
 export const ConsoleSkills: React.FC = () => {
   return (
@@ -88,20 +26,20 @@ export const ConsoleSkills: React.FC = () => {
 
         {/* 4 Materia / Skill Panes */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillCategories.map((category) => (
+          {skillsData.filter((c) => ['frontend', 'backend', 'devops', 'database'].includes(c.id)).map((category) => (
             <div
-              key={category.title}
+              key={category.id}
               className="bg-gradient-to-b from-[#0a256b] via-[#081b4f] to-[#040d2b] border-4 border-t-white border-l-white border-r-slate-500 border-b-slate-600 p-5 shadow-[6px_6px_0px_#000]"
             >
               <div className="flex items-center justify-between pb-2 border-b border-blue-400/30 mb-3 font-pixel">
                 <div className="flex items-center gap-2 text-white">
-                  {category.icon}
+                  {categoryIconMap[category.id] || <Globe className="w-5 h-5 text-cyan-300" />}
                   <h3 className="text-xl font-bold drop-shadow-[1px_1px_0px_#000]">
-                    {category.title}
+                    {category.themeTitles.console}
                   </h3>
                 </div>
                 <span className="text-xs text-yellow-300 bg-blue-950 px-2 py-0.5 border border-blue-400">
-                  {category.code}
+                  {category.themeCodes.console}
                 </span>
               </div>
 
@@ -118,7 +56,7 @@ export const ConsoleSkills: React.FC = () => {
                   >
                     <span>{skill.name}</span>
                     <span className="text-[11px] text-yellow-300 bg-blue-950 px-1 py-0.2 border border-blue-500">
-                      [{skill.level}]
+                      [RANK: {skill.level.toUpperCase()}]
                     </span>
                   </div>
                 ))}

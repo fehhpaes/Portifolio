@@ -1,12 +1,12 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import Navbar from '@/components/16bit/Navbar';
+import Hero from '@/components/16bit/Hero';
+import About from '@/components/16bit/About';
+import Skills from '@/components/16bit/Skills';
+import Projects from '@/components/16bit/Projects';
+import Contact from '@/components/16bit/Contact';
+import Footer from '@/components/16bit/Footer';
 
 export const metadata: Metadata = {
   title: 'Felipe Paes da Silva | 16-Bit RPG Edition',

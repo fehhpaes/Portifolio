@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Shield, Menu, X, Sword } from 'lucide-react';
+import { Shield, Menu, X } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { personal, contact } = profileData;
 
   const navLinks = [
     { name: 'Status', href: '#inicio' },
@@ -29,7 +31,7 @@ export const Navbar: React.FC = () => {
               <Shield className="w-5 h-5" />
             </div>
             <span>
-              FELIPE PAES DA SILVA <span className="text-emerald-400 text-lg sm:text-xl">[ EM BUSCA DE XP ]</span>
+              {personal.name.toUpperCase()} <span className="text-emerald-400 text-lg sm:text-xl">[ EM BUSCA DE XP ]</span>
             </span>
           </a>
 
@@ -81,20 +83,20 @@ export const Navbar: React.FC = () => {
           {/* Social Icons */}
           <div className="hidden sm:flex items-center gap-2">
             <a
-              href="https://github.com/fehhpaes"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-none bg-slate-900 border-2 border-amber-600 text-slate-300 hover:bg-amber-500 hover:text-black transition-none"
-              aria-label="GitHub de Felipe"
+              aria-label="GitHub"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-none bg-slate-900 border-2 border-amber-600 text-amber-400 hover:bg-amber-500 hover:text-black transition-none"
-              aria-label="LinkedIn de Felipe"
+              aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
             </a>
@@ -147,7 +149,7 @@ export const Navbar: React.FC = () => {
 
             <div className="pt-3 border-t-2 border-amber-600/60 flex items-center gap-3">
               <a
-                href="https://github.com/fehhpaes"
+                href={contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-1.5 bg-slate-950 border-2 border-slate-700 text-slate-300 hover:bg-amber-500 hover:text-black font-pixel text-lg"
@@ -155,7 +157,7 @@ export const Navbar: React.FC = () => {
                 <GithubIcon className="w-4 h-4" /> GITHUB
               </a>
               <a
-                href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+                href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-3 py-1.5 bg-slate-950 border-2 border-amber-600 text-amber-400 hover:bg-amber-500 hover:text-black font-pixel text-lg"

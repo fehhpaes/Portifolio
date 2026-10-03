@@ -3,8 +3,11 @@
 import React from 'react';
 import { Shield, ArrowUp } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const Footer: React.FC = () => {
+  const { personal, contact } = profileData;
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -20,14 +23,14 @@ export const Footer: React.FC = () => {
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-amber-400 text-xl font-bold">FELIPE PAES // DEV MULTIPLATAFORMA</p>
+              <p className="text-amber-400 text-xl font-bold">{personal.name.toUpperCase()} // {personal.shortRole.toUpperCase()}</p>
               <p className="text-xs text-slate-400">[ RPG QUEST LOG ENGINE - 16-BIT EDITION ]</p>
             </div>
           </div>
 
           {/* System Tech Stack & Theme Switchers */}
           <div className="flex flex-col items-center gap-2 text-center text-slate-400 text-sm">
-            <span>NEXT.JS • TYPESCRIPT • TAILWIND CSS • NODEMAILER</span>
+            <span>NEXT.JS • TYPESCRIPT • TAILWIND CSS • REACT</span>
             <div className="flex items-center gap-2 text-xs font-pixel">
               <a
                 href="/"
@@ -59,7 +62,7 @@ export const Footer: React.FC = () => {
           {/* Social Links & Back to Top */}
           <div className="flex items-center gap-2.5">
             <a
-              href="https://github.com/fehhpaes"
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-slate-900 border-2 border-slate-700 hover:bg-slate-800 text-slate-300 transition-none"
@@ -68,7 +71,7 @@ export const Footer: React.FC = () => {
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-slate-900 border-2 border-amber-600 text-amber-400 hover:bg-amber-500 hover:text-black transition-none"

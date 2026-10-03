@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Shield, Sword, Scroll, MapPin, Globe, GraduationCap, Award } from 'lucide-react';
+import { Scroll, MapPin, Globe, GraduationCap, Award } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { profileData } from '@/data/profile';
 
 export const Hero: React.FC = () => {
+  const { personal, bio, contact } = profileData;
+
   return (
     <section
       id="inicio"
@@ -22,19 +25,26 @@ export const Hero: React.FC = () => {
               <span>PAINEL DE STATUS DO PERSONAGEM</span>
             </div>
 
-            {/* Character Main Name */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-pixel font-bold tracking-wider text-amber-400 mb-4 drop-shadow-[3px_3px_0px_#000]">
-              Felipe Paes da Silva
-            </h1>
-
-            {/* RPG Classes & Background Tags */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-6 font-pixel text-xl sm:text-2xl">
-              <span className="px-3 py-1 bg-slate-950 border-2 border-emerald-500 text-emerald-400">
-                [ Classe: Desenvolvedor Multiplataforma ]
-              </span>
-              <span className="px-3 py-1 bg-slate-950 border-2 border-amber-500 text-amber-300">
-                [ Background: História & Geografia ]
-              </span>
+            {/* Character Main Name & Avatar */}
+            <div className="flex flex-col md:flex-row items-center justify-center mb-6 text-center md:text-left">
+              <img
+                src="/profile.jpeg"
+                alt="Felipe Paes da Silva"
+                className="w-20 h-20 md:w-24 md:h-24 object-cover border-4 border-double border-white rounded-none mb-4 md:mb-0 md:mr-6 shrink-0 shadow-[4px_4px_0px_#000]"
+              />
+              <div>
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-pixel font-bold tracking-wider text-amber-400 mb-2 drop-shadow-[3px_3px_0px_#000]">
+                  {personal.name}
+                </h1>
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 font-pixel text-xl sm:text-2xl">
+                  <span className="px-3 py-1 bg-slate-950 border-2 border-emerald-500 text-emerald-400">
+                    [ Classe: {personal.shortRole} ]
+                  </span>
+                  <span className="px-3 py-1 bg-slate-950 border-2 border-amber-500 text-amber-300">
+                    [ Background: História & Geografia ]
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* Real Character Attributes: Base, Idiomas & XP */}
@@ -44,7 +54,7 @@ export const Hero: React.FC = () => {
                 <span className="text-red-500 text-base sm:text-lg mb-1 flex items-center gap-1.5">
                   <MapPin className="w-4 h-4" /> » [ BASE ] «
                 </span>
-                <span className="text-slate-200 text-xl sm:text-2xl font-bold">Sorocaba, SP</span>
+                <span className="text-slate-200 text-xl sm:text-2xl font-bold">{personal.location}</span>
               </div>
 
               {/* Caixa 2: Idiomas */}
@@ -52,7 +62,7 @@ export const Hero: React.FC = () => {
                 <span className="text-blue-500 text-base sm:text-lg mb-1 flex items-center gap-1.5">
                   <Globe className="w-4 h-4" /> » [ IDIOMAS ] «
                 </span>
-                <span className="text-slate-200 text-xl sm:text-2xl font-bold">Inglês</span>
+                <span className="text-slate-200 text-xl sm:text-2xl font-bold">{personal.languages}</span>
               </div>
 
               {/* Caixa 3: XP */}
@@ -60,13 +70,13 @@ export const Hero: React.FC = () => {
                 <span className="text-amber-500 text-base sm:text-lg mb-1 flex items-center gap-1.5">
                   <GraduationCap className="w-4 h-4" /> » [ XP ] «
                 </span>
-                <span className="text-slate-200 text-xl sm:text-2xl font-bold">Uniso, Uninter, Fatec & Etec</span>
+                <span className="text-slate-200 text-xl sm:text-2xl font-bold">{personal.education}</span>
               </div>
             </div>
 
             {/* Direct & Authentic Narrative */}
             <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 font-sans">
-              Desenvolvedor focado no ecossistema JavaScript e TypeScript. A minha trajetória é um pouco diferente: formei-me em História e Geografia, o que me deu uma base analítica forte para entender os problemas de negócio a fundo. Atualmente, curso Desenvolvimento de Software Multiplataforma na Fatec e atuo na gestão da infraestrutura de TI da Etec Armando Pannunzio.
+              {bio.fullSynopsis}
             </p>
 
             {/* Action Buttons (Menu Seletores) */}
@@ -82,7 +92,7 @@ export const Hero: React.FC = () => {
 
               {/* Action: GitHub */}
               <a
-                href="https://github.com/fehhpaes"
+                href={contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-slate-950 text-slate-200 font-pixel text-2xl uppercase border-2 border-slate-700 hover:bg-slate-800 hover:border-slate-500 transition-none"
@@ -93,7 +103,7 @@ export const Hero: React.FC = () => {
 
               {/* Action: LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/felipe-paes-da-silva-44b461318"
+                href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-slate-950 text-amber-400 font-pixel text-2xl uppercase border-2 border-amber-600 hover:bg-amber-500 hover:text-black transition-none"
