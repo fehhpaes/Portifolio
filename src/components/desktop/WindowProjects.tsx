@@ -108,16 +108,21 @@ export const WindowProjects: React.FC = () => {
               </div>
 
               {/* Actions Ribbon */}
-              <div className="pt-2 border-t border-slate-300 flex items-center justify-between gap-2 text-xs font-sans">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-slate-700 hover:text-black hover:underline"
-                >
-                  <GithubIcon className="w-3.5 h-3.5" />
-                  <span>Código-Fonte</span>
-                </a>
+              <div className="pt-2 border-t border-slate-300 flex flex-wrap items-center justify-between gap-2 text-xs font-sans">
+                <div className="flex flex-wrap gap-2 items-center">
+                  {project.repositories.map((repo, rIdx) => (
+                    <a
+                      key={rIdx}
+                      href={repo.url || 'https://github.com/fehhpaes'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-slate-700 hover:text-black hover:underline"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>{project.repositories.length > 1 ? `Código (${repo.label})` : 'Código-Fonte'}</span>
+                    </a>
+                  ))}
+                </div>
 
                 {project.liveUrl && project.liveUrl !== '#' ? (
                   <a

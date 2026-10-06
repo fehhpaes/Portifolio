@@ -100,16 +100,21 @@ export const AtlasProjects: React.FC = () => {
               </div>
 
               {/* Actions & Reference Links */}
-              <div className="pt-3 border-t border-stone-300 flex items-center justify-between gap-4 text-sm font-serif">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-amber-900 hover:text-amber-950 hover:underline"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                  <span>// Repositório de Código</span>
-                </a>
+              <div className="pt-3 border-t border-stone-300 flex flex-wrap items-center justify-between gap-3 text-sm font-serif">
+                <div className="flex flex-wrap gap-2 items-center">
+                  {project.repositories.map((repo, rIdx) => (
+                    <a
+                      key={rIdx}
+                      href={repo.url || 'https://github.com/fehhpaes'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-amber-900 hover:text-amber-950 hover:underline"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                      <span>{project.repositories.length > 1 ? `// Repositório (${repo.label})` : '// Repositório de Código'}</span>
+                    </a>
+                  ))}
+                </div>
 
                 {project.liveUrl && project.liveUrl !== '#' ? (
                   <a

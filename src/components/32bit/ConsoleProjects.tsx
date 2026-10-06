@@ -92,16 +92,21 @@ export const ConsoleProjects: React.FC = () => {
               </div>
 
               {/* Actions */}
-              <div className="pt-3 border-t border-blue-400/30 flex items-center justify-between gap-3 font-pixel text-base">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-slate-200 hover:text-yellow-300 transition-none py-1 drop-shadow-[1px_1px_0px_#000]"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                  <span>// REPOSITÓRIO</span>
-                </a>
+              <div className="pt-3 border-t border-blue-400/30 flex flex-wrap items-center justify-between gap-3 font-pixel text-base">
+                <div className="flex flex-wrap gap-2 items-center">
+                  {project.repositories.map((repo, rIdx) => (
+                    <a
+                      key={rIdx}
+                      href={repo.url || 'https://github.com/fehhpaes'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-slate-200 hover:text-yellow-300 transition-none py-1 drop-shadow-[1px_1px_0px_#000]"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                      <span>{project.repositories.length > 1 ? `// REPO (${repo.label.toUpperCase()})` : '// REPOSITÓRIO'}</span>
+                    </a>
+                  ))}
+                </div>
 
                 {project.liveUrl && project.liveUrl !== '#' ? (
                   <a

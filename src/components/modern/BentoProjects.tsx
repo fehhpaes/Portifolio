@@ -94,7 +94,7 @@ export default function BentoProjects() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 pt-3 border-t border-white/5">
+                <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-white/5">
                   {proj.liveUrl && (
                     <a
                       href={proj.liveUrl}
@@ -107,15 +107,18 @@ export default function BentoProjects() {
                     </a>
                   )}
 
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-white/10 text-xs font-medium transition-colors"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" />
-                    <span>Código Fonte</span>
-                  </a>
+                  {proj.repositories.map((repo, rIdx) => (
+                    <a
+                      key={rIdx}
+                      href={repo.url || 'https://github.com/fehhpaes'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white border border-white/10 text-xs font-medium transition-colors"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>{proj.repositories.length > 1 ? `GitHub (${repo.label})` : 'Código Fonte'}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

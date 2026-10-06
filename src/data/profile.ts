@@ -229,7 +229,7 @@ export interface ProjectItem {
   subtitle?: string;
   description: string;
   technologies: string[];
-  githubUrl: string;
+  repositories: { label: string; url: string }[];
   liveUrl?: string;
   category: 'Full-Stack' | 'Mobile' | 'Web App';
   status: 'Missão Concluída' | 'Missão em Andamento';
@@ -250,7 +250,12 @@ export const projectsData: ProjectItem[] = [
       'GitHub Actions',
       'DigitalOcean',
     ],
-    githubUrl: 'https://github.com/fehhpaes',
+    repositories: [
+      { label: 'Web', url: 'https://github.com/Onglink/Onglink_Frontend' },
+      { label: 'Mobile', url: 'https://github.com/Onglink/Onglink_frontend_mobile' },
+      { label: 'API', url: 'https://github.com/Onglink/Onglink_Backend' },
+      { label: 'Admin Java', url: 'https://github.com/Onglink/onglinkPIJava' },
+    ],
     liveUrl: 'https://onglink.vercel.app/',
     category: 'Full-Stack',
     status: 'Missão em Andamento',
@@ -258,14 +263,18 @@ export const projectsData: ProjectItem[] = [
   {
     id: 'temperato',
     title: 'Temperato',
-    subtitle: 'Dashboard Web & App (Em Dev)',
+    subtitle: 'Dashboard Web (Em Refatoração)',
     description:
-      'Plataforma culinária para gerenciamento e exploração de receitas. O foco atual do ecossistema é o dashboard web administrativo, enquanto o aplicativo mobile integrado encontra-se em fase de desenvolvimento ativo.',
+      'Plataforma culinária para gerenciamento de receitas. Atualmente o código concentra-se no repositório Web, mas encontra-se em processo ativo de refatoração estrutural para separação de responsabilidades (criação de API dedicada) e futuro desenvolvimento Mobile.',
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'Node.js'],
-    githubUrl: 'https://github.com/fehhpaes',
+    repositories: [
+      { label: 'Repositório Atual', url: 'https://github.com/fehhpaes/Temperato_Frontend_Web' },
+      //{ label: 'Mobile', url: 'https://github.com/fehhpaes/Temperato_Frontend_Mobile' },
+      //{ label: 'API', url: 'https://github.com/fehhpaes/Temperato_Backend' },
+    ],
     liveUrl: 'https://www.temperatoapp.com.br/',
     category: 'Web App',
-    status: 'Missão Concluída',
+    status: 'Missão em Andamento',
   },
   {
     id: 'prjsolicitacoes',
@@ -274,7 +283,10 @@ export const projectsData: ProjectItem[] = [
     description:
       'Sistema corporativo interno para triagem, fluxo de aprovações e controle de requisições operacionais. Inclui disparo automatizado de notificações e rastreamento em tempo real de chamados.',
     technologies: ['React', 'Node.js', 'Express', 'JWT'],
-    githubUrl: 'https://github.com/fehhpaes',
+    repositories: [
+      { label: 'Frontend', url: 'https://github.com/fehhpaes/SolicitaApan_FrontEnd' },
+      { label: 'Backend', url: 'https://github.com/fehhpaes/SolicitaApan_Backend' },
+    ],
     liveUrl: 'https://solicitaapan.vercel.app/',
     category: 'Web App',
     status: 'Missão Concluída',
@@ -286,7 +298,9 @@ export const projectsData: ProjectItem[] = [
     description:
       'Aplicação web interativa para exploração de catálogo de filmes, com integração a API externa para busca em tempo real de títulos, sinopses e avaliações.',
     technologies: ['React', 'Tailwind CSS', 'API REST'],
-    githubUrl: 'https://github.com/fehhpaes',
+    repositories: [
+      { label: 'GitHub', url: 'https://github.com/fehhpaes/Cine_Chapeu' },
+    ],
     liveUrl: 'https://cinechapeu.vercel.app/',
     category: 'Web App',
     status: 'Missão Concluída',

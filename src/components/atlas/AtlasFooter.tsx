@@ -1,9 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { ArrowUp, Compass, Sparkles } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from '@/components/Icons';
+import { ArrowUp, Compass } from 'lucide-react';
 import { profileData } from '@/data/profile';
 
 export const AtlasFooter: React.FC = () => {
@@ -33,44 +31,11 @@ export const AtlasFooter: React.FC = () => {
             <p className="text-[11px] mt-0.5">Tipografia: Playfair Display & Nunito</p>
           </div>
 
-          {/* Actions & Theme Links */}
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-stone-900 text-stone-100 hover:bg-black transition-colors border border-stone-800"
-              title="Modern Bento"
-            >
-              <span>Modern</span>
-            </Link>
-
-            <Link
-              href="/16bit"
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-stone-200 text-stone-800 hover:bg-amber-900 hover:text-stone-50 transition-colors border border-stone-300"
-              title="RPG 16-Bit"
-            >
-              <Sparkles className="w-3 h-3" />
-              <span>16-Bit</span>
-            </Link>
-
-            <Link
-              href="/32bit"
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-900 text-stone-100 hover:bg-blue-950 transition-colors border border-blue-800"
-              title="Console 32-Bit"
-            >
-              <span>32-Bit</span>
-            </Link>
-
-            <Link
-              href="/desktop"
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#008080] text-stone-100 hover:brightness-110 transition-colors border border-teal-800"
-              title="Desktop 95"
-            >
-              <span>Win95</span>
-            </Link>
-
+          {/* Actions */}
+          <div className="flex items-center justify-center md:justify-end">
             <button
               onClick={scrollToTop}
-              className="p-1.5 bg-stone-200 text-stone-700 hover:bg-stone-300 border border-stone-300 transition-colors cursor-pointer ml-1"
+              className="p-1.5 bg-stone-200 text-stone-700 hover:bg-stone-300 border border-stone-300 transition-colors cursor-pointer"
               aria-label="Voltar ao início da página"
             >
               <ArrowUp className="w-3.5 h-3.5" />

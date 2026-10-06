@@ -28,35 +28,9 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* System Tech Stack & Theme Switchers */}
-          <div className="flex flex-col items-center gap-2 text-center text-slate-400 text-sm">
+          {/* System Tech Stack */}
+          <div className="flex flex-col items-center gap-1 text-center text-slate-400 text-sm">
             <span>NEXT.JS • TYPESCRIPT • TAILWIND CSS • REACT</span>
-            <div className="flex items-center gap-2 text-xs font-pixel">
-              <a
-                href="/"
-                className="px-2 py-0.5 bg-neutral-900 border border-neutral-700 text-white hover:bg-neutral-800"
-              >
-                [ MODERN BENTO ]
-              </a>
-              <a
-                href="/atlas"
-                className="px-2 py-0.5 bg-stone-200 border border-stone-400 text-stone-900 hover:bg-stone-300"
-              >
-                [ ATLAS ]
-              </a>
-              <a
-                href="/32bit"
-                className="px-2 py-0.5 bg-blue-900 border border-blue-500 text-white hover:bg-blue-800"
-              >
-                [ 32-BIT ]
-              </a>
-              <a
-                href="/desktop"
-                className="px-2 py-0.5 bg-[#c0c0c0] border border-black text-black hover:bg-[#d0d0d0]"
-              >
-                [ WIN 95 ]
-              </a>
-            </div>
           </div>
 
           {/* Social Links & Back to Top */}
