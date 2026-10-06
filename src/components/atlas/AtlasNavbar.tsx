@@ -1,16 +1,21 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { Compass, BookMarked, Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Compass } from 'lucide-react';
 import { profileData } from '@/data/profile';
 
 export const AtlasNavbar: React.FC = () => {
+  const router = useRouter();
   const { personal } = profileData;
 
+  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    router.push(e.target.value);
+  };
+
   return (
-    <nav className="sticky top-0 z-40 bg-[#F4F1EA]/90 backdrop-blur-sm border-b border-stone-300 py-3">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+    <nav className="sticky top-0 z-40 bg-[#F4F1EA]/95 backdrop-blur-sm border-b border-stone-300 py-3 shadow-xs">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
         
         {/* Brand */}
         <a href="#" className="flex items-center gap-2 text-stone-900 font-serif text-lg tracking-tight">
@@ -19,50 +24,40 @@ export const AtlasNavbar: React.FC = () => {
         </a>
 
         {/* Section Links & Mode Switch */}
-        <div className="flex items-center gap-4 text-xs font-serif">
-          <a href="#sobre" className="text-stone-700 hover:text-amber-900 transition-colors">
-            Prefácio
-          </a>
-          <a href="#habilidades" className="text-stone-700 hover:text-amber-900 transition-colors">
-            Índice
-          </a>
-          <a href="#projetos" className="text-stone-700 hover:text-amber-900 transition-colors">
-            Capítulos
-          </a>
-          <a href="#contato" className="text-stone-700 hover:text-amber-900 transition-colors">
-            Correspondência
-          </a>
+        <div className="flex items-center gap-3 sm:gap-4 text-xs font-serif">
+          <div className="hidden sm:flex items-center gap-3 sm:gap-4">
+            <a href="#sobre" className="text-stone-700 hover:text-amber-900 transition-colors">
+              Prefácio
+            </a>
+            <a href="#habilidades" className="text-stone-700 hover:text-amber-900 transition-colors">
+              Índice
+            </a>
+            <a href="#projetos" className="text-stone-700 hover:text-amber-900 transition-colors">
+              Capítulos
+            </a>
+            <a href="#contato" className="text-stone-700 hover:text-amber-900 transition-colors">
+              Correspondência
+            </a>
+          </div>
 
-          {/* Theme Switchers */}
-          <div className="flex items-center gap-1.5 ml-2">
-            <Link
-              href="/"
-              className="inline-flex items-center px-2 py-0.5 bg-stone-900 text-stone-100 hover:bg-black transition-colors border border-stone-800"
-              title="Ver versão Moderna (Bento Box)"
+          {/* Atlas Editorial Theme Selector */}
+          <div className="flex items-center gap-1.5 ml-1">
+            <label htmlFor="atlas-theme-select" className="text-stone-600 font-serif text-[11px] hidden sm:inline">
+              Edição:
+            </label>
+            <select
+              id="atlas-theme-select"
+              value="/atlas"
+              onChange={handleThemeChange}
+              aria-label="Selecionar Edição do Portfólio"
+              className="bg-[#EFECE6] text-stone-900 font-serif text-xs px-2.5 py-1 border border-stone-400 rounded-none cursor-pointer focus:outline-none focus:border-amber-900 focus:bg-[#E7E2D6] transition-colors"
             >
-              <span>Modern</span>
-            </Link>
-            <Link
-              href="/16bit"
-              className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-200 text-stone-800 hover:bg-amber-900 hover:text-stone-50 transition-colors border border-stone-300"
-              title="Ver versão RPG 16-Bit"
-            >
-              <span>16-Bit</span>
-            </Link>
-            <Link
-              href="/32bit"
-              className="inline-flex items-center px-2 py-0.5 bg-blue-900 text-stone-100 hover:bg-blue-950 transition-colors border border-blue-800"
-              title="Ver versão Console 32-Bit"
-            >
-              <span>32-Bit</span>
-            </Link>
-            <Link
-              href="/desktop"
-              className="inline-flex items-center px-2 py-0.5 bg-[#008080] text-stone-100 hover:brightness-110 transition-colors border border-teal-800"
-              title="Ver versão Windows 95 Desktop"
-            >
-              <span>Win95</span>
-            </Link>
+              <option value="/" className="bg-[#F4F1EA] text-stone-900">Modern</option>
+              <option value="/16bit" className="bg-[#F4F1EA] text-stone-900">16-Bit</option>
+              <option value="/32bit" className="bg-[#F4F1EA] text-stone-900">32-Bit</option>
+              <option value="/desktop" className="bg-[#F4F1EA] text-stone-900">Win95</option>
+              <option value="/atlas" className="bg-[#F4F1EA] text-stone-900">Atlas</option>
+            </select>
           </div>
         </div>
 

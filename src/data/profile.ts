@@ -166,9 +166,9 @@ export const skillsData: SkillCategory[] = [
     description: 'Conteinerização, esteiras automatizadas de entrega, versionamento e servidores Linux.',
     skills: [
       { name: 'Docker & Containers', level: 'Intermediário' },
-      { name: 'GitHub Actions (CI/CD)', level: 'Intermediário' },
+      { name: 'Linux (Ubuntu Server)', level: 'Intermediário' },
+      { name: 'CI/CD & GitHub Actions', level: 'Intermediário' },
       { name: 'DigitalOcean Droplets', level: 'Intermediário' },
-      { name: 'Linux / Bash Scripting', level: 'Intermediário' },
       { name: 'Git & Versionamento', level: 'Avançado' },
       { name: 'Electron (Desktop Apps)', level: 'Intermediário' },
     ],
@@ -191,12 +191,10 @@ export const skillsData: SkillCategory[] = [
     },
     description: 'Modelagem persistente NoSQL e relacional, integridade de dados e consultas estruturadas.',
     skills: [
+      { name: 'Microsoft SQL Server', level: 'Intermediário' },
       { name: 'MongoDB & Mongoose', level: 'Avançado' },
-      { name: 'PostgreSQL', level: 'Intermediário' },
-      { name: 'MySQL', level: 'Intermediário' },
+      { name: 'Modelagem de Dados (SQL & NoSQL)', level: 'Avançado' },
       { name: 'AsyncStorage & Local Data', level: 'Avançado' },
-      { name: 'Modelagem NoSQL & Relacional', level: 'Avançado' },
-      { name: 'Consultas & Indexação', level: 'Intermediário' },
     ],
   },
   {

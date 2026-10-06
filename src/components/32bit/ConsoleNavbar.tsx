@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { Disc, Gamepad2, Sparkles, Compass } from 'lucide-react';
+import { Gamepad2 } from 'lucide-react';
 import { profileData } from '@/data/profile';
 
 export const ConsoleNavbar: React.FC = () => {
@@ -56,36 +55,20 @@ export const ConsoleNavbar: React.FC = () => {
           </span>
         </div>
 
-        {/* Alternative Theme Links */}
-        <div className="flex items-center gap-1.5 text-xs font-pixel">
-          <Link
-            href="/"
-            className="px-2 py-1 bg-neutral-900 text-white border border-neutral-700 hover:bg-neutral-800 transition-none"
-            title="Versão Modern Bento"
+        {/* 32-Bit Console Theme Selector Dropdown */}
+        <div className="mt-4 md:mt-0">
+          <select
+            value="/32bit"
+            onChange={(e) => (window.location.href = e.target.value)}
+            aria-label="Selecionar Modo de Exibição 32-bit"
+            className="bg-[#050f2c] text-white font-pixel border-2 border-t-white border-l-white border-r-blue-900 border-b-blue-900 p-2 cursor-pointer outline-none"
           >
-            [ Modern ]
-          </Link>
-          <Link
-            href="/16bit"
-            className="px-2 py-1 bg-amber-700 text-white border border-amber-500 hover:bg-amber-600 transition-none"
-            title="Versão 16-Bit SNES"
-          >
-            [ 16-Bit ]
-          </Link>
-          <Link
-            href="/atlas"
-            className="px-2 py-1 bg-stone-200 text-stone-900 border border-stone-400 hover:bg-stone-300 transition-none"
-            title="Versão Atlas Editorial"
-          >
-            [ Atlas ]
-          </Link>
-          <Link
-            href="/desktop"
-            className="px-2 py-1 bg-[#008080] text-white border border-teal-500 hover:brightness-110 transition-none"
-            title="Versão Windows 95 Desktop"
-          >
-            [ Win95 ]
-          </Link>
+            <option value="/">[ Modern ]</option>
+            <option value="/16bit">[ 16-Bit ]</option>
+            <option value="/32bit">[ 32-Bit ]</option>
+            <option value="/desktop">[ Win95 ]</option>
+            <option value="/atlas">[ Atlas ]</option>
+          </select>
         </div>
 
       </div>

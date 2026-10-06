@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Monitor, Volume2, ShieldCheck, Sparkles, BookOpen, Disc } from 'lucide-react';
+import { Volume2, ShieldCheck } from 'lucide-react';
 
 export const Taskbar: React.FC = () => {
   const [time, setTime] = useState('12:00 PM');
@@ -157,47 +157,22 @@ export const Taskbar: React.FC = () => {
 
       </div>
 
-      {/* Right side: System Tray & Clock */}
+      {/* Right side: Win95 Dropdown & System Tray & Clock */}
       <div className="flex items-center gap-2">
         
-        {/* Era Switcher Badges */}
-        <div className="hidden md:flex items-center gap-1 text-[11px] font-sans font-bold">
-          <Link
-            href="/"
-            className="px-1.5 py-0.5 bg-neutral-900 text-white border border-t-white border-l-white border-r-black border-b-black hover:brightness-110"
-            title="Versão Modern Bento"
-          >
-            Modern
-          </Link>
-          <Link
-            href="/16bit"
-            className="px-1.5 py-0.5 bg-amber-600 text-white border border-t-white border-l-white border-r-black border-b-black hover:brightness-110"
-            title="Versão 16-Bit"
-          >
-            16-Bit
-          </Link>
-          <Link
-            href="/atlas"
-            className="px-1.5 py-0.5 bg-stone-200 text-stone-900 border border-t-white border-l-white border-r-black border-b-black hover:brightness-110"
-            title="Versão Atlas"
-          >
-            Atlas
-          </Link>
-          <Link
-            href="/32bit"
-            className="px-1.5 py-0.5 bg-blue-800 text-white border border-t-white border-l-white border-r-black border-b-black hover:brightness-110"
-            title="Versão 32-Bit"
-          >
-            32-Bit
-          </Link>
-          <Link
-            href="/desktop"
-            className="px-1.5 py-0.5 bg-[#008080] text-white border border-t-black border-l-black border-r-white border-b-white font-black"
-            title="Versão Windows 95 (Atual)"
-          >
-            Win95
-          </Link>
-        </div>
+        {/* Win95 Theme Selector Dropdown */}
+        <select
+          value="/desktop"
+          onChange={(e) => (window.location.href = e.target.value)}
+          aria-label="Selecionar Tema do Sistema"
+          className="bg-gray-200 text-black font-sans border-2 border-t-white border-l-white border-b-gray-800 border-r-gray-800 px-2 py-1 h-full cursor-pointer outline-none mx-2 font-bold"
+        >
+          <option value="/">Modern</option>
+          <option value="/16bit">16-Bit</option>
+          <option value="/32bit">32-Bit</option>
+          <option value="/desktop">Win95</option>
+          <option value="/atlas">Atlas</option>
+        </select>
 
         {/* System Tray (Sunken Border) */}
         <div className="flex items-center gap-2 px-2.5 py-1 bg-[#c0c0c0] border-2 border-t-black border-l-black border-r-white border-b-white text-xs text-black font-mono">
