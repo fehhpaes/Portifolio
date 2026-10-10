@@ -44,7 +44,7 @@ export const profileData: ProfileData = {
   },
   bio: {
     intro:
-      'Sou um desenvolvedor focado em entender o contexto e a regra de negócio antes de escrever qualquer linha de código. Minha base inicial em Ciências Humanas (História & Geografia) combinada com a graduação em Desenvolvimento de Software Multiplataforma (Fatec) me fornece visão sistêmica, comunicação clara e precisão arquitetural.',
+      'Sou um desenvolvedor focado em entender o contexto e a regra de negócio antes de escrever qualquer linha de código. Minha base inicial em Ciências Humanas (História & Geografia), combinada com a graduação em Desenvolvimento de Software Multiplataforma (Fatec), me fornece visão sistêmica, comunicação clara e precisão arquitetural.',
     experience:
       'Com experiência prévia na gestão de infraestrutura e laboratórios na Etec Armando Pannunzio, consolidei minha capacidade prática de resolução de problemas complexos e governança. Atualmente, foco integralmente na minha evolução no desenvolvimento de software e em novos desafios no mercado de tecnologia.',
     fullSynopsis:
