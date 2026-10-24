@@ -28,7 +28,7 @@ export default function BentoContact() {
           </span>
         </div>
 
-        <p className="text-xs text-neutral-300 mb-6 leading-relaxed">
+        <p className="text-xs text-neutral-300 mb-6 leading-relaxed text-justify">
           Aberto a oportunidades CLT, projetos estratégicos, freelas e parcerias em tecnologia. Conecte-se comigo:
         </p>
 

@@ -35,7 +35,7 @@ export const About: React.FC = () => {
               <span className="text-emerald-400">[ REGISTRO: ATIVO ]</span>
             </div>
 
-            <div className="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+            <div className="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed font-sans text-justify">
               <p>
                 {bio.storyNarrative}
               </p>
@@ -69,7 +69,7 @@ export const About: React.FC = () => {
                   <h4 className="text-xl font-pixel font-bold text-slate-100">Backend & Nuvem</h4>
                 </div>
               </div>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">
+              <p className="text-slate-300 text-sm font-sans leading-relaxed text-justify">
                 APIs RESTful, Docker, bancos relacionais e conteinerização escalável.
               </p>
             </div>
@@ -85,7 +85,7 @@ export const About: React.FC = () => {
                   <h4 className="text-xl font-pixel font-bold text-slate-100">Visão Analítica</h4>
                 </div>
               </div>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">
+              <p className="text-slate-300 text-sm font-sans leading-relaxed text-justify">
                 Interpretação crítica de cenários, resolução metódica e raciocínio geográfico.
               </p>
             </div>
@@ -101,7 +101,7 @@ export const About: React.FC = () => {
                   <h4 className="text-xl font-pixel font-bold text-slate-100">Didática & Comunicação</h4>
                 </div>
               </div>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">
+              <p className="text-slate-300 text-sm font-sans leading-relaxed text-justify">
                 Experiência prévia em TI e laboratórios: clareza técnica, documentação e tutoria.
               </p>
             </div>
@@ -117,7 +117,7 @@ export const About: React.FC = () => {
                   <h4 className="text-xl font-pixel font-bold text-slate-100">Multiplataforma</h4>
                 </div>
               </div>
-              <p className="text-slate-300 text-sm font-sans leading-relaxed">
+              <p className="text-slate-300 text-sm font-sans leading-relaxed text-justify">
                 Integração harmoniosa entre ecossistemas Web, Mobile e utilitários.
               </p>
             </div>

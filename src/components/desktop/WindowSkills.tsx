@@ -39,7 +39,7 @@ export const WindowSkills: React.FC = () => {
 
         {/* Header Ribbon */}
         <div className="p-3 bg-[#c0c0c0] border-b border-b-slate-400 text-xs font-sans text-black">
-          <p>
+          <p className="text-justify">
             Selecione uma categoria de componentes para verificar os módulos instalados e níveis de proficiência técnica:
           </p>
         </div>

@@ -95,7 +95,7 @@ export const Projects: React.FC = () => {
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-sans">
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-sans text-justify">
                   {project.description}
                 </p>
 

@@ -63,7 +63,7 @@ export default function BentoProfile() {
         </div>
 
         {/* Humanized Narrative */}
-        <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed">
+        <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed text-justify">
           <p>
             {bio.intro}
           </p>
@@ -83,7 +83,7 @@ export default function BentoProfile() {
             Fluxo Moderno de Engenharia
             <Sparkles className="w-3 h-3 text-amber-400" />
           </h2>
-          <p className="text-xs text-neutral-300 leading-relaxed">
+          <p className="text-xs text-neutral-300 leading-relaxed text-justify">
             {bio.aiWorkflow}
           </p>
         </div>

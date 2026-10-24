@@ -27,7 +27,7 @@ export const ConsoleContact: React.FC = () => {
                 <MessageSquare className="w-5 h-5 text-yellow-300" />
                 <span>Canais do Aventureiro</span>
               </h3>
-              <p className="text-xs text-slate-200 font-sans leading-relaxed mb-4">
+              <p className="text-xs text-slate-200 font-sans leading-relaxed mb-4 text-justify">
                 Redes oficiais de comunicação e acompanhamento de código-fonte.
               </p>
 

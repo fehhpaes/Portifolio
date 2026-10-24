@@ -44,7 +44,7 @@ export const AtlasAbout: React.FC = () => {
             <div>
               <span className="text-xs font-serif uppercase tracking-wider text-amber-900 block mb-1">01. Engenharia</span>
               <h4 className="font-serif text-base text-stone-900 font-medium">Backend & Nuvem</h4>
-              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal">
+              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal text-justify">
                 APIs RESTful, Docker, modelagem de dados e deploy de microsserviços.
               </p>
             </div>
@@ -52,7 +52,7 @@ export const AtlasAbout: React.FC = () => {
             <div className="pt-3 border-t border-stone-200">
               <span className="text-xs font-serif uppercase tracking-wider text-amber-900 block mb-1">02. Metodologia</span>
               <h4 className="font-serif text-base text-stone-900 font-medium">Visão Analítica</h4>
-              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal">
+              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal text-justify">
                 Interpretação crítica de cenários, resolução metódica e raciocínio sistêmico.
               </p>
             </div>
@@ -60,7 +60,7 @@ export const AtlasAbout: React.FC = () => {
             <div className="pt-3 border-t border-stone-200">
               <span className="text-xs font-serif uppercase tracking-wider text-amber-900 block mb-1">03. Pedagogia</span>
               <h4 className="font-serif text-base text-stone-900 font-medium">Docência & Mentoria</h4>
-              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal">
+              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal text-justify">
                 Comunicação assertiva, didática técnica e síntese de conceitos.
               </p>
             </div>
@@ -68,7 +68,7 @@ export const AtlasAbout: React.FC = () => {
             <div className="pt-3 border-t border-stone-200">
               <span className="text-xs font-serif uppercase tracking-wider text-amber-900 block mb-1">04. Plataformas</span>
               <h4 className="font-serif text-base text-stone-900 font-medium">Ecossistema Web & Mobile</h4>
-              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal">
+              <p className="text-xs text-stone-600 font-sans mt-0.5 leading-normal text-justify">
                 Desenvolvimento integrado com React, Next.js e React Native.
               </p>
             </div>

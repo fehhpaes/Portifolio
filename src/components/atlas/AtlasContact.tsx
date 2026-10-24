@@ -32,7 +32,7 @@ export const AtlasContact: React.FC = () => {
               <Compass className="w-5 h-5 text-amber-900" />
               <span>Canais Oficiais</span>
             </h3>
-            <p className="text-sm text-stone-600 font-sans leading-relaxed mb-6">
+            <p className="text-sm text-stone-600 font-sans leading-relaxed mb-6 text-justify">
               Acompanhe a trajetória profissional e os repositórios abertos de engenharia.
             </p>
 
