@@ -70,7 +70,7 @@ export default function BentoProjects() {
                   </span>
                 </div>
 
-                <p className="text-xs text-neutral-300 line-clamp-3 mb-4 leading-relaxed">
+                <p className="text-xs text-neutral-300 line-clamp-3 mb-4 leading-relaxed text-justify">
                   {proj.description}
                 </p>
               </div>

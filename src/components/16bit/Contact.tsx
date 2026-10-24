@@ -33,7 +33,7 @@ export const Contact: React.FC = () => {
                 <Beer className="w-5 h-5 text-amber-400" />
                 <span>Canais da Taverna</span>
               </h3>
-              <p className="text-slate-300 text-xs font-sans leading-relaxed mb-4">
+              <p className="text-slate-300 text-xs font-sans leading-relaxed mb-4 text-justify">
                 Comunicação rápida para contratação, projetos sob medida e parcerias em tecnologia.
               </p>
 

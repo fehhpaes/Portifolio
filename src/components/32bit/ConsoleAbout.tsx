@@ -51,7 +51,7 @@ export const ConsoleAbout: React.FC = () => {
                 <Server className="w-4 h-4" />
                 <h4 className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Backend & Nuvem</h4>
               </div>
-              <p className="text-xs text-slate-300 font-sans">
+              <p className="text-xs text-slate-300 font-sans text-justify">
                 APIs RESTful, Docker, modelagem de dados e deploy de microsserviços.
               </p>
             </div>
@@ -61,7 +61,7 @@ export const ConsoleAbout: React.FC = () => {
                 <Compass className="w-4 h-4" />
                 <h4 className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Visão Analítica</h4>
               </div>
-              <p className="text-xs text-slate-300 font-sans">
+              <p className="text-xs text-slate-300 font-sans text-justify">
                 Interpretação crítica de cenários, resolução metódica e raciocínio sistêmico.
               </p>
             </div>
@@ -71,7 +71,7 @@ export const ConsoleAbout: React.FC = () => {
                 <GraduationCap className="w-4 h-4" />
                 <h4 className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Docência & Mentoria</h4>
               </div>
-              <p className="text-xs text-slate-300 font-sans">
+              <p className="text-xs text-slate-300 font-sans text-justify">
                 Comunicação assertiva, didática técnica e síntese de conceitos.
               </p>
             </div>
@@ -81,7 +81,7 @@ export const ConsoleAbout: React.FC = () => {
                 <Layers className="w-4 h-4" />
                 <h4 className="text-lg text-white font-bold drop-shadow-[1px_1px_0px_#000]">Multiplataforma</h4>
               </div>
-              <p className="text-xs text-slate-300 font-sans">
+              <p className="text-xs text-slate-300 font-sans text-justify">
                 Desenvolvimento integrado com React, Next.js e React Native.
               </p>
             </div>

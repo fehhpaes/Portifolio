@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Direct & Authentic Narrative */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 font-sans">
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 font-sans text-justify">
               {bio.fullSynopsis}
             </p>
 
