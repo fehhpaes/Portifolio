@@ -37,7 +37,7 @@ export const profileData: ProfileData = {
     role: 'Desenvolvedor Full Stack & Multiplataforma • Next.js, React, Node.js & TypeScript',
     shortRole: 'Desenvolvedor Multiplataforma',
     location: 'Sorocaba, SP',
-    languages: 'Inglês',
+    languages: 'Inglês (B1 Intermediário)',
     education: 'Uniso, Uninter, Fatec & Etec',
     status: 'Disponível para Contratação',
     availability: 'Contratação CLT, PJ, Projetos & Freelas',
