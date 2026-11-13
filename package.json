@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "seed:cv": "node scripts/seed-curriculum.mjs"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/fehhpaes/Portifolio#readme",
   "dependencies": {
+    "dotenv": "^18.0.10",
     "lucide-react": "^1.49.0",
+    "mongoose": "^9.12.1",
     "next": "^16.3.8",
     "nodemailer": "^10.0.13",
     "react": "^19.3.0",
